@@ -1,0 +1,59 @@
+DETAILS:
+
+        Author: Lorenzo Zampieri(lorenzo.zampieri@awi.de)
+        Date:   02/04/2020
+
+        List of the ERA5 variables used to derive the forcing for sea ice and ocean models
+        For more details see the following page: 
+        https://confluence.ecmwf.int/display/CKB/ERA5%3A+data+documentation#ERA5:datadocumentation-Table1
+
+
+NEEDED VARIABLES:
+
+  Param.ID  Short.Name  Units           Branch      Long.Name
+
+- 134       sp          [Pa]            sf00        Surface Pressure  
+
+- 142       lsp         [m]             sf12        Large Scale Precipitations
+ 
+- 143       cp          [m]             sf12        Convective precipitations 
+
+- 144       sf          [m] (WE)        sf12        Snowfall
+
+- 165       10u         [m][s]-1        sf00        10 metre U wind component
+
+- 166       10v         [m][s]-1        sf00        10 metre V wind component
+
+- 167       2t          [K]             sf00        2 meter temperature
+
+- 168       2d          [K]             sf00        2 meter dewpoint temperature
+
+- 169       ssrd        [J][m]-2        sf12        Surface solar radiation downwards
+
+- 175       ts          [J][m]-2        sf12        Surface thermal radiation downwards
+ 
+- 205       ro          [m]             sf12        Runoff
+
+INTERESTING VARIABLES:
+
+  Param.ID  Short.Name  Units           Branch      Long.Name
+
+- 164       tcc         %               sf00        Total Cloud Cover
+
+- 186       lcc         %               sf00        Low Cloud Cover
+
+- 187       mcc         %               sf00        Medium Cloud Cover
+
+- 188       hcc         %               sf00        High Cloud Cover
+
+
+ADDITIONAL INFORMATION:
+
+        1) The hydrological parameters are in units of "m of water per day" 
+           and so they should be multiplied by 1000 to convert to [kg][m]-2[day]-1 
+           or [mm][day]-1.
+
+        2) Energy radiative fluxes should be divided by 86400 seconds (24 hours) 
+           to convert to the commonly used units of [W][m]-2.
+
+        3) WE stands for water equivalent
