@@ -32,7 +32,7 @@ yyyy = str(sys.argv[2])
 
 var_list = ["q", "u", "v", "t2m", "sp", "tcc", "ssrd", "strd", "sf", "rf"]
 
-if int(yyyy) > 2020 or int(yyyy) < 1950:
+if int(yyyy) > 2023 or int(yyyy) < 1950:
     print("Error: year out of range [1950,2020]")
     sys.exit(1)
 
