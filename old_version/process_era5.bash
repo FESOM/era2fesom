@@ -1,11 +1,13 @@
 #!/bin/bash
 #SBATCH --job-name=ERA5_proc
-#SBATCH -p compute,compute2
-#SBATCH --ntasks=10
+#SBATCH -p compute
+#SBATCH --ntasks-per-node=128
+#SBATCH --nodes=1
+#SBATCH --switches=1
 #SBATCH --time=08:00:00
 #SBATCH -o slurm-out-sf12.out
 #SBATCH -e slurm-err-sf12.out
-#SBATCH -A ba1138
+#SBATCH -A ab0995
 
 # -------------------------------------------------------------------------
 #
@@ -26,13 +28,13 @@
 #
 
 # Variable names
-declare -a    var_array=("211")
-#declare -a    var_array=("142" "143" "144" "169" "175" "205") 
+# declare -a    var_array=("211")
+declare -a    var_array=("142" "143" "144" "169" "175" "205") 
 #declare -a    var_array=("134" "164" "165" "166" "167" "168")
 
 # ERA5 branch where to find the variable (must have the same size as var_array)
-declare -a branch_array=("sf12")
-#declare -a branch_array=("sf12" "sf12" "sf12" "sf12" "sf12" "sf12")
+# declare -a branch_array=("sf12")
+declare -a branch_array=("sf12" "sf12" "sf12" "sf12" "sf12" "sf12")
 #declare -a branch_array=("sf00" "sf00" "sf00" "sf00" "sf00" "sf00")
 
 # Years to be processed 
@@ -43,7 +45,7 @@ declare -a branch_array=("sf12")
 #                         "2011" "2012" "2013" "2014" "2015" "2016" "2017" "2018" "2019"        )
 #declare -a   year_array=(                                                                "2010" \
 #                          "2011" "2012" "2013" "2014" "2015" "2016" "2017" "2018" "2019" "2020" )
-declare -a   year_array=("2014" "2015")
+declare -a   year_array=("2021")
 # Months to be preocessed
 declare -a  month_array=("01" "02" "03" "04" "05" "06" "07" "08" "09" "10" "11" "12")
 
@@ -54,7 +56,7 @@ data_freq="01"
 in_dir="/pool/data/ERA5/"
 
 # Folder for storing processed data
-out_dir="/mnt/lustre01/work/ba1138/a270099/era5/data/" 
+out_dir="/pool/data/AWICM/FESOM2/FORCING/era5/data/" 
 
 # -------------------------------------------------------------------------
 

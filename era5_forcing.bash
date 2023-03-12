@@ -1,12 +1,13 @@
 #!/bin/bash
 
-#SBATCH --job-name=ERA5_proc
-#SBATCH -p compute,compute2
-#SBATCH --ntasks=10
+#SBATCH --job-name=ERA
+#SBATCH -p compute
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=128
 #SBATCH --time=08:00:00
 #SBATCH -o slurm-out.out
 #SBATCH -e slurm-err.out
-#SBATCH -A ba1138
+#SBATCH -A ab0995
 
 # -------------------------------------------------------------------------
 #
@@ -24,23 +25,19 @@
 #
 
 # Years to be processed
-declare -a   year_array=("2015")
+# declare -a   year_array=("1950")
+# declare -a   year_array=("1951" "1952" "1953" "1954" "1955")
+declare -a   year_array=("2022")
 #declare -a   year_array=("2010" "2011" "2012" "2013" "2014" "2015" "2016" "2017" "2018" "2019" "2020")
 
 # Variable names
-#declare -a    var_array=("134" "142" "143" "144" \ 
-#                         "164" "165" "166" "167" \
-#                         "168" "169" "175" "205")
-declare -a    var_array=("211")
+declare -a    var_array=("134" "142" "143" "144" \ 
+                        "164" "165" "166" "167" \
+                        "168" "169" "175" "205")
+# declare -a    var_array=("211")
 
-#declare -a    frc_array=("t2m" "q" "u" "v" "sp" "sf" "rf" "ssrd" "strd")
-declare -a    frc_array=("strc")
-
-# Folder with era5 data
-in_dir="/mnt/lustre01/work/ba1138/a270099/era5/data/"
-
-# FOlder with forcing
-out_dir="/mnt/lustre01/work/ba1138/a270099/era5/forcing/"
+declare -a    frc_array=("t2m" "q" "u" "v" "sp" "sf" "rf" "ssrd" "strd")
+# declare -a    frc_array=("rf")
 
 # -------------------------------------------------------------------------
 
@@ -57,8 +54,9 @@ for var in ${frc_array[@]}; do
     echo " ----                         ---- "
     for year in ${year_array[@]}; do
         echo " -- Processing year "$year
-        python processing.py $var $year
+        python processing_era5.py $var $year
     done
+    count=$((count + 1))
 done
 
 
