@@ -1,6 +1,6 @@
 ## ERA2FESOM
 
-Conerts ERA5 data located on DKRZ to netCDF, that can be used ad FESOM2 forcing.
+Converts ERA5 data located on DKRZ to netCDF, that can be used ad FESOM2 forcing.
 Work mainly done by Lorenzo Zampieri @lzampier , and then adapted by @koldunovn, so all mistakeas are on him :)
 
 Steps of conversion
